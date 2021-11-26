@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Domains } from "./domain";
+import { UI } from "./components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col w-screen min-h-screen">
+      {/* <UI.Header /> */}
+      <UI.Navbar navtitle={"Ernesto Cano Pérez"} />
+      <UI.Main>
+        <Routes>
+          <Route index path="/" element={<Domains.Home />} />
+          <Route
+            caseSensitive={false}
+            path="/experiences"
+            element={<Domains.Experiences />}
+          />
+          <Route
+            caseSensitive={false}
+            path="/certifications"
+            element={<Domains.Certifications />}
+          />
+          <Route
+            caseSensitive={false}
+            path="/about"
+            element={<Domains.About />}
+          />
+        </Routes>
+      </UI.Main>
+      <UI.Footer />
     </div>
   );
 }
